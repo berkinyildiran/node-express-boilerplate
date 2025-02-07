@@ -3,18 +3,21 @@ import http from 'node:http'
 
 import { Config } from './config'
 
+import { Cache } from './shared/cache'
 import { Database } from './shared/database'
 
 export class App {
   private readonly app: Application
   private readonly config: Config
 
+  private readonly cache: Cache
   private readonly database: Database
 
   constructor() {
     this.app = express()
     this.config = new Config(process.env)
 
+    this.cache = new Cache(this.config.cache)
     this.database = new Database(this.config.database)
   }
 
@@ -29,6 +32,6 @@ export class App {
   }
 
   async connect(): Promise<void> {
-    await Promise.all([this.database.postgres.connect()])
+    await Promise.all([this.cache.redis.connect(), this.database.postgres.connect()])
   }
 }
