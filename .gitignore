@@ -1,0 +1,12 @@
+# Dependecy directories
+node_modules
+
+# Build directories
+dist
+
+# Package managers
+package-lock.json
+yarn.lock
+
+# Editor files
+.idea
