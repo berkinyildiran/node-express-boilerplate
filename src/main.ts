@@ -6,6 +6,8 @@ dotenv.config()
 
 async function bootstrap() {
   const app = new App()
+  await app.connect()
+
   app.listen()
 }
 bootstrap()
