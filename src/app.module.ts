@@ -3,28 +3,28 @@ import http from 'node:http'
 
 import { Config } from './config'
 
-import { Auth } from './module/auth'
+import { AuthModule } from './module/auth/auth.module'
 
-import { Cache } from './shared/cache'
-import { Database } from './shared/database'
+import { CacheModule } from './shared/cache/cache.module'
+import { DatabaseModule } from './shared/database/database.module'
 
-export class App {
+export class AppModule {
   private readonly app: Application
   private readonly config: Config
 
-  private readonly cache: Cache
-  private readonly database: Database
+  private readonly cache: CacheModule
+  private readonly database: DatabaseModule
 
-  private readonly auth: Auth
+  private readonly auth: AuthModule
 
   constructor() {
     this.app = express()
     this.config = new Config(process.env)
 
-    this.cache = new Cache(this.config.cache)
-    this.database = new Database(this.config.database)
+    this.cache = new CacheModule(this.config.cache)
+    this.database = new DatabaseModule(this.config.database)
 
-    this.auth = new Auth(this.database.postgres)
+    this.auth = new AuthModule(this.database.postgres)
 
     this.initializeRoutes()
   }

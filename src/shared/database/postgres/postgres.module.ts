@@ -4,7 +4,7 @@ import { PostgresConfig } from '../../../config/database/postgres.config'
 
 import { PostgresAdapter } from './postgres.adapter'
 
-export class PostgresDatabase {
+export class PostgresModule {
   private readonly adapter: PostgresAdapter
 
   constructor(config: PostgresConfig) {

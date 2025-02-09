@@ -1,11 +1,11 @@
 import dotenv from 'dotenv'
 
-import { App } from './app'
+import { AppModule } from './app.module'
 
 dotenv.config()
 
 async function bootstrap() {
-  const app = new App()
+  const app = new AppModule()
   await app.connect()
 
   app.listen()
