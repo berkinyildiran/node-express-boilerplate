@@ -1,11 +1,11 @@
 import { DatabaseConfig } from '../../config/database'
 
-import { PostgresModule } from './postgres/postgres.module'
+import { PostgresDatabase } from './postgres'
 
 export class DatabaseModule {
-  readonly postgres: PostgresModule
+  readonly postgres: PostgresDatabase
 
   constructor(config: DatabaseConfig) {
-    this.postgres = new PostgresModule(config.postgres)
+    this.postgres = new PostgresDatabase(config.postgres)
   }
 }

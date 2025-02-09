@@ -1,11 +1,11 @@
 import { CacheConfig } from '../../config/cache'
 
-import { RedisModule } from './redis/redis.module'
+import { RedisCache } from './redis'
 
 export class CacheModule {
-  readonly redis: RedisModule
+  readonly redis: RedisCache
 
   constructor(config: CacheConfig) {
-    this.redis = new RedisModule(config.redis)
+    this.redis = new RedisCache(config.redis)
   }
 }

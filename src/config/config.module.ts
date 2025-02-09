@@ -2,7 +2,7 @@ import { CacheConfig } from './cache'
 import { DatabaseConfig } from './database'
 import { ServerConfig } from './server'
 
-export class Config {
+export class ConfigModule {
   readonly cache: CacheConfig
   readonly database: DatabaseConfig
   readonly server: ServerConfig

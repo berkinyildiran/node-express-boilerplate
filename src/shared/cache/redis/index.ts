@@ -4,7 +4,7 @@ import { RedisConfig } from '../../../config/cache/redis.config'
 
 import { RedisAdapter } from './redis.adapter'
 
-export class RedisModule {
+export class RedisCache {
   private readonly adapter: RedisAdapter
 
   constructor(config: RedisConfig) {

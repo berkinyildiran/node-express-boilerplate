@@ -1,9 +1,9 @@
-import { PostgresModule } from '../../shared/database/postgres/postgres.module'
+import { PostgresDatabase } from '../../shared/database/postgres'
 
 export class AuthRepository {
-  private readonly postgres: PostgresModule
+  private readonly postgres: PostgresDatabase
 
-  constructor(postgres: PostgresModule) {
+  constructor(postgres: PostgresDatabase) {
     this.postgres = postgres
   }
 }

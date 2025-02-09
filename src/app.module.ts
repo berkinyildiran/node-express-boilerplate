@@ -1,7 +1,7 @@
 import express, { Application } from 'express'
 import http from 'node:http'
 
-import { Config } from './config'
+import { ConfigModule } from './config/config.module'
 
 import { AuthModule } from './module/auth/auth.module'
 
@@ -10,7 +10,7 @@ import { DatabaseModule } from './shared/database/database.module'
 
 export class AppModule {
   private readonly app: Application
-  private readonly config: Config
+  private readonly config: ConfigModule
 
   private readonly cache: CacheModule
   private readonly database: DatabaseModule
@@ -19,7 +19,7 @@ export class AppModule {
 
   constructor() {
     this.app = express()
-    this.config = new Config(process.env)
+    this.config = new ConfigModule(process.env)
 
     this.cache = new CacheModule(this.config.cache)
     this.database = new DatabaseModule(this.config.database)
