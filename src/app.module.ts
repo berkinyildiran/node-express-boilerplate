@@ -54,9 +54,7 @@ export class AppModule {
       promises.push(this.cache.redis.connect())
       promises.push(this.database.postgres.connect())
 
-      this.logger.debug('Server connection starting')
       await Promise.all(promises)
-      this.logger.debug('Server connected successfully')
     } catch (e) {
       this.logger.error(`Server connection failed: ${e.message}`, e.stack)
       throw new Exception(e.message)
