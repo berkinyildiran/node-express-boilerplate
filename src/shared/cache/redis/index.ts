@@ -4,22 +4,25 @@ import { Logger } from '../../../common/logger'
 import { RedisConfig } from '../../../config/cache/redis.config'
 
 import { RedisAdapter } from './redis.adapter'
+import { RedisService } from './redis.service'
 
-export class RedisCache {
+export class Redis {
   private readonly adapter: RedisAdapter
   private readonly logger: Logger
+
+  readonly service: RedisService
 
   constructor(config: RedisConfig, logger: Logger) {
     this.logger = logger
 
-    this.logger.debug('Redis adapter creating')
     this.adapter = new RedisAdapter(config.host, config.port)
     this.logger.debug('Redis adapter created successfully')
+
+    this.service = new RedisService(this.adapter, this.logger)
   }
 
   async connect(): Promise<void> {
     try {
-      this.logger.debug('Redis connection starting')
       await this.adapter.connect()
       this.logger.info('Redis connection successfully')
     } catch (e) {

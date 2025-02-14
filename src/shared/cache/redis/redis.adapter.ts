@@ -14,4 +14,12 @@ export class RedisAdapter {
   async connect(): Promise<void> {
     await this.client.connect()
   }
+
+  async get(key: string): Promise<string | null> {
+    return this.client.get(key)
+  }
+
+  async set(key: string, value: string): Promise<void> {
+    await this.client.set(key, value)
+  }
 }
