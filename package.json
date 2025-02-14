@@ -20,5 +20,11 @@
     "@types/pg": "^8.11.11",
     "prettier": "^3.4.2",
     "typescript": "^5.7.3"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }
