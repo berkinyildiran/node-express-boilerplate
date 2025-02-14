@@ -22,9 +22,9 @@ export class AppModule {
 
   private readonly auth: AuthModule
 
-  constructor() {
+  constructor(config: ConfigModule) {
     this.app = express()
-    this.config = new ConfigModule(process.env)
+    this.config = config
 
     this.cache = new CacheModule(this.config.cache)
     this.database = new DatabaseModule(this.config.database)
