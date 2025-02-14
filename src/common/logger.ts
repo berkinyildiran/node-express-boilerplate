@@ -1,48 +1,43 @@
-import moment from 'moment'
-import * as uuid from 'uuid'
+import crypto from 'node:crypto'
 
-import { LoggerManager } from './logger.manager'
+import { LoggerManager } from '../logger/logger.manager'
 
-import { LoggerRecord } from './interface/logger.record'
+import { LoggerRecord } from '../logger/interface/logger.record'
 
 export class Logger {
   private readonly id: string
   private readonly operation: string
 
   constructor(operation: string) {
-    this.id = uuid.v4()
+    this.id = crypto.randomUUID()
     this.operation = operation
   }
 
   private prepare(): LoggerRecord {
     return {
       id: this.id,
-      date: moment(),
+      date: Date.now(),
       operation: this.operation,
     }
   }
 
   debug(message: string): void {
     const record = this.prepare()
-
-    LoggerManager.debug('console', record, message)
+    LoggerManager.debug(record, message)
   }
 
-  error(message: string): void {
+  error(message: string, stack: string): void {
     const record = this.prepare()
-
-    LoggerManager.error('console', record, message)
+    LoggerManager.error(record, message, stack)
   }
 
   info(message: string): void {
     const record = this.prepare()
-
-    LoggerManager.info('console', record, message)
+    LoggerManager.info(record, message)
   }
 
   warn(message: string): void {
     const record = this.prepare()
-
-    LoggerManager.warn('console', record, message)
+    LoggerManager.warn(record, message)
   }
 }

@@ -1,4 +1,4 @@
-import { Logger } from '../../logger'
+import { Logger } from '../../common/logger'
 
 import { PostgresDatabase } from '../../shared/database/postgres'
 

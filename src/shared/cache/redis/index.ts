@@ -1,8 +1,7 @@
 import { Exception } from '../../../common/exception'
+import { Logger } from '../../../common/logger'
 
 import { RedisConfig } from '../../../config/cache/redis.config'
-
-import { Logger } from '../../../logger'
 
 import { RedisAdapter } from './redis.adapter'
 
@@ -24,7 +23,7 @@ export class RedisCache {
       await this.adapter.connect()
       this.logger.info('Redis connection successfully')
     } catch (e) {
-      this.logger.error('Redis connection failed: ' + e.message)
+      this.logger.error(`Redis connection failed: ${e.message}`, e.stack)
       throw new Exception(e.message)
     }
   }

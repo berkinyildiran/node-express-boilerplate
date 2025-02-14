@@ -3,7 +3,7 @@ import { LoggerRecord } from './logger.record'
 export interface LoggerStrategy {
   debug(record: LoggerRecord, message: string): void
 
-  error(record: LoggerRecord, message: string): void
+  error(record: LoggerRecord, message: string, stack: string): void
 
   info(record: LoggerRecord, message: string): void
 

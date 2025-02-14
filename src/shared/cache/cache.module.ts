@@ -1,6 +1,6 @@
-import { CacheConfig } from '../../config/cache'
+import { Logger } from '../../common/logger'
 
-import { Logger } from '../../logger'
+import { CacheConfig } from '../../config/cache'
 
 import { RedisCache } from './redis'
 

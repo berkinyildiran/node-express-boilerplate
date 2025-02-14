@@ -1,11 +1,10 @@
 import express, { Application } from 'express'
 import http from 'node:http'
 
-import { ConfigModule } from './config/config.module'
-
 import { Exception } from './common/exception'
+import { Logger } from './common/logger'
 
-import { Logger } from './logger'
+import { ConfigModule } from './config/config.module'
 
 import { AuthModule } from './module/auth/auth.module'
 
@@ -59,7 +58,7 @@ export class AppModule {
       await Promise.all(promises)
       this.logger.debug('Server connected successfully')
     } catch (e) {
-      this.logger.error('Server connection failed: ' + e.message)
+      this.logger.error(`Server connection failed: ${e.message}`, e.stack)
       throw new Exception(e.message)
     }
   }

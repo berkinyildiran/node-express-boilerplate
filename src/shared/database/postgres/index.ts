@@ -1,8 +1,7 @@
 import { Exception } from '../../../common/exception'
+import { Logger } from '../../../common/logger'
 
 import { PostgresConfig } from '../../../config/database/postgres.config'
-
-import { Logger } from '../../../logger'
 
 import { PostgresAdapter } from './postgres.adapter'
 
@@ -24,7 +23,7 @@ export class PostgresDatabase {
       await this.adapter.connect()
       this.logger.info('Postgres connection successfully')
     } catch (e) {
-      this.logger.error('Postgres connection failed: ' + e.message)
+      this.logger.error(`Postgres connection failed: ${e.message}`, e.stack)
       throw new Exception(e.message)
     }
   }

@@ -9,14 +9,7 @@ export class ConsoleLogger implements LoggerStrategy {
   }
 
   private formatter(level: string, record: LoggerRecord): string {
-    const parts = []
-
-    parts.push(record.id)
-    parts.push(level.toUpperCase())
-    parts.push(record.date.format('YYYY-MM-DD HH:mm:ss'))
-    parts.push(record.operation)
-
-    return parts.map((part) => '[' + part + ']').join(' ')
+    return `[${record.id}] [${new Date(record.date).toLocaleString()}] [${level.toUpperCase()}] [${record.operation}]`
   }
 
   debug(record: LoggerRecord, message: string): void {

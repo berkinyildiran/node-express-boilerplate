@@ -1,6 +1,6 @@
-import { DatabaseConfig } from '../../config/database'
+import { Logger } from '../../common/logger'
 
-import { Logger } from '../../logger'
+import { DatabaseConfig } from '../../config/database'
 
 import { PostgresDatabase } from './postgres'
 
