@@ -28,7 +28,7 @@ export class AppModule {
     this.cache = new CacheModule(this.config.cache)
     this.database = new DatabaseModule(this.config.database)
 
-    this.auth = new AuthModule(this.database.postgres)
+    this.auth = new AuthModule(this.database.postgres.service)
 
     this.app.use('/auth', this.auth.controller.router)
 

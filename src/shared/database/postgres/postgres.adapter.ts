@@ -16,4 +16,10 @@ export class PostgresAdapter {
   async connect(): Promise<void> {
     await this.client.connect()
   }
+
+  async query(text: string, ...params: any[]): Promise<any[]> {
+    const response = await this.client.query(text, params)
+
+    return response.rows
+  }
 }

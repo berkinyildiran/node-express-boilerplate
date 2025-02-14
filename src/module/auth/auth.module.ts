@@ -1,6 +1,6 @@
 import { Logger } from '../../common/logger'
 
-import { PostgresDatabase } from '../../shared/database/postgres'
+import { PostgresService } from '../../shared/database/postgres/postgres.service'
 
 import { AuthController } from './auth.controller'
 import { AuthRepository } from './auth.repository'
@@ -11,7 +11,7 @@ export class AuthModule {
 
   readonly controller: AuthController
 
-  constructor(postgres: PostgresDatabase) {
+  constructor(postgres: PostgresService) {
     const repository = new AuthRepository(postgres)
     const service = new AuthService(repository)
 
